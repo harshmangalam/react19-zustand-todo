@@ -13,6 +13,7 @@
     "react": "19.0.0-canary-96c584661-20240412",
     "react-dom": "19.0.0-canary-96c584661-20240412",
     "shortid": "^2.2.16",
+    "vite-plugin-svgr": "^4.2.0",
     "zustand": "^4.5.2"
   },
   "devDependencies": {
