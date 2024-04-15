@@ -1,8 +1,8 @@
 import { create } from "zustand";
 import { Task } from "../types/todo";
-
+import shortid from "shortid";
 interface TodoAction {
-  addTask: (task: Task) => void;
+  addTask: (title: string) => void;
   removeTask: (id: string) => void;
   clearTasks: () => void;
 }
@@ -13,7 +13,13 @@ interface TodoState {
 export const useTodoStore = create<TodoState>((set) => ({
   tasks: [],
   actions: {
-    addTask: (task: Task) => {
+    addTask: (title: string) => {
+      const task: Task = {
+        title,
+        createdAt: new Date(),
+        id: shortid(),
+        status: "init",
+      };
       set((state) => ({ tasks: [...state.tasks, task] }));
     },
     removeTask: (id) => {

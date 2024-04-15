@@ -1,14 +1,23 @@
+"use client";
+
 import React from "react";
+import { TextInput } from "./ui/input";
+import { useTodoActions } from "../store/todo";
 
 export function CreateTodo() {
   const modalRef = React.useRef<HTMLDialogElement>(null);
+  const { addTask } = useTodoActions();
 
   function handleOpenModal() {
     modalRef.current?.showModal();
   }
 
   function handleCreateTodo(formData: FormData) {
-    console.log(e);
+    const title = formData.get("title")?.toString();
+    if (!title) {
+      return;
+    }
+    addTask(title);
   }
   return (
     <>
@@ -26,12 +35,12 @@ export function CreateTodo() {
           </form>
           <h3 className="font-bold text-lg">Create Todo</h3>
           <div>
-            <form action={handleCreateTodo}>
-              <textarea
-                className="textarea textarea-bordered textarea-primary"
-                rows={4}
-              />
-              <button type="submit">Create</button>
+            {/* @ts-expect-error Action type issues  */}
+            <form action={handleCreateTodo} className="flex flex-col gap-4">
+              <TextInput name="title" id="title" label="Title" />
+              <button className="btn btn-primary btn-block" type="submit">
+                Create
+              </button>
             </form>
           </div>
         </div>
