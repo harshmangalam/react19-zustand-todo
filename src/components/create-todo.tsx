@@ -4,6 +4,7 @@ import React from "react";
 import { TextInput } from "./ui/input";
 import { useTodoActions } from "../store/todo";
 import AddIcon from "../assets/icons/plus.svg?react";
+import { Textarea } from "./ui/textarea";
 
 export function CreateTodo() {
   const modalRef = React.useRef<HTMLDialogElement>(null);
@@ -43,7 +44,13 @@ export function CreateTodo() {
           <div>
             {/* @ts-expect-error Action type issues  */}
             <form action={handleCreateTodo} className="flex flex-col gap-4">
-              <TextInput name="title" id="title" label="Title" />
+              <TextInput required name="title" id="title" label="Title" />
+              <Textarea
+                required
+                name="description"
+                id="description"
+                label="Description"
+              />
               <button className="btn btn-primary btn-block" type="submit">
                 Create
               </button>
