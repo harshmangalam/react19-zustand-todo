@@ -22,9 +22,11 @@ export function CreateTodo() {
   return (
     <>
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
-      <button className="btn" onClick={handleOpenModal}>
-        Create Todo
-      </button>
+      <div className="flex justify-end">
+        <button className="btn" onClick={handleOpenModal}>
+          Create Todo
+        </button>
+      </div>
       <dialog ref={modalRef} className="modal">
         <div className="modal-box">
           <form method="dialog">
