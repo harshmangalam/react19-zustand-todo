@@ -15,10 +15,11 @@ export function CreateTodo() {
 
   function handleCreateTodo(formData: FormData) {
     const title = formData.get("title")?.toString();
-    if (!title) {
+    const description = formData.get("description")?.toString();
+    if (!title || !description) {
       return;
     }
-    addTask(title);
+    addTask(title, description);
     modalRef.current?.close();
   }
   return (
