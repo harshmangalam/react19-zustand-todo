@@ -3,6 +3,7 @@
 import React from "react";
 import { TextInput } from "./ui/input";
 import { useTodoActions } from "../store/todo";
+import AddIcon from "../assets/icons/plus.svg?react";
 
 export function CreateTodo() {
   const modalRef = React.useRef<HTMLDialogElement>(null);
@@ -24,6 +25,7 @@ export function CreateTodo() {
       {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <div className="flex justify-end">
         <button className="btn" onClick={handleOpenModal}>
+          <AddIcon className="w-5 h-5 stroke-2" />
           Create Todo
         </button>
       </div>
