@@ -19,6 +19,7 @@ export function CreateTodo() {
       return;
     }
     addTask(title);
+    modalRef.current?.close();
   }
   return (
     <>
